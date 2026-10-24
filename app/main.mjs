@@ -43,13 +43,14 @@ function renderResults() {
     const meta = element('p', 'result-meta', `${match.source.id} · ${match.source.year} · ${match.locator}`);
     const title = element('h3', '', match.source.title);
     const summary = element('p', 'summary', match.summary);
+    const details = element('p', 'source-details', `DOI ${match.source.doi} · ${match.source.license} · 原文位置：${match.locator}`);
     const actions = element('div', 'result-actions');
     const link = element('a', '', '打开原文 ↗');
     link.href = match.source.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
     const select = element('button', 'outline', '用此来源建卡 →');
     select.type = 'button'; select.addEventListener('click', () => selectMatch(match));
     actions.append(link, select);
-    article.append(meta, title, summary, actions); container.append(article);
+    article.append(meta, title, summary, details, actions); container.append(article);
   });
 }
 
@@ -60,6 +61,7 @@ function selectMatch(match) {
   box.append(element('span', 'source-label', '已选来源'), element('strong', '', match.source.title), element('span', '', `${match.source.id} · ${match.locator}`));
   $('judgment').value = '';
   $('limitation').value = '';
+  $('confirmed').checked = false;
   $('save-message').textContent = '';
   $('editor-panel').hidden = false;
   $('editor-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -100,11 +102,13 @@ document.querySelectorAll('[data-example]').forEach((button) => button.addEventL
 $('card-form').addEventListener('submit', (event) => {
   event.preventDefault();
   try {
-    const card = createCard({ question: state.question, judgment: $('judgment').value, limitation: $('limitation').value, evidenceItem: state.selected });
+    const card = createCard({ question: state.question, judgment: $('judgment').value, limitation: $('limitation').value, evidenceItem: state.selected, confirmed: $('confirmed').checked });
     state.cards.unshift(card);
     if (!saveCards()) { state.cards.shift(); return; }
     $('save-message').textContent = '已保存到当前浏览器。';
     renderCards();
+    state.selected = null;
+    $('editor-panel').hidden = true;
     document.querySelector('.library').scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) { $('save-message').textContent = error.message; }
 });

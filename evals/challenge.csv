@@ -1,0 +1,17 @@
+id,question,expected_evidence_id,expected_behavior,reference_locator,review_status
+C01,2023 BraTS 中增强肿瘤标签改为 3 吗,E-005,show_source,Section 4.10 label values,desk_checked
+C02,2023 BraTS 总共有多少项任务,E-006,show_source,Section 4.10 number of tasks,desk_checked
+C03,F1 是 precision 和 recall 的调和平均吗,E-008,show_source,Performance metrics equation 6,desk_checked
+C04,BraSyn 2023 为什么需要缺失 MRI 任务,,no_source,reason_not_in_fixture,scope_checked
+C05,Bonato 论文回顾的 BraTS 数据集年份范围是什么,E-001,show_source,Abstract,desk_checked
+C06,T1c 在 BraTS 2023 四种 MRI 模态中吗,E-002,show_source,Section 4.10 MRI modalities,desk_checked
+C07,FLAIR 序列的采集时间是多少,,no_source,not_in_fixture,scope_checked
+C08,BraSyn 2023 的论文作者是谁,,no_source,not_in_fixture,scope_checked
+C09,ET 标签在 BraTS 2022 的取值是什么,,no_source,not_in_fixture,scope_checked
+C10,F1 分数在 BraTS 2023 上是多少,,no_source,not_in_fixture,scope_checked
+C11,IoU 在哪家医院采集数据,,no_source,not_in_fixture,scope_checked
+C12,BraTS 2023 的 MRI 模态哪种最好,,no_source,not_in_fixture,scope_checked
+C13,Dice 系数的最大值是多少,,no_source,not_in_fixture,scope_checked
+C14,Jaccard index 是 IoU 吗,E-007,show_source,Performance metrics equation 7,desk_checked
+C15,2025 在 Bonato 综述中是已完成挑战还是规划中,E-001,show_source,Abstract,desk_checked
+C16,BraTS 2023 任务的获奖团队有哪些,,no_source,not_in_fixture,scope_checked

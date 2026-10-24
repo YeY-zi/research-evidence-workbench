@@ -2,17 +2,17 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { findEvidence } from '../app/core.mjs';
 
-const [label, output] = process.argv.slice(2);
+const [label, output, questionFile = 'evals/questions.csv'] = process.argv.slice(2);
 if (!label || !output) {
-  console.error('Usage: node evals/run.mjs <label> <output.json>');
+  console.error('Usage: node evals/run.mjs <label> <output.json> [question-set.csv]');
   process.exit(2);
 }
 
-const csv = readFileSync(new URL('./questions.csv', import.meta.url), 'utf8').trimEnd().split(/\r?\n/);
+const csv = readFileSync(questionFile, 'utf8').trimEnd().split(/\r?\n/);
 const headers = csv.shift().split(',');
 const questions = csv.map((line) => Object.fromEntries(line.split(',').map((value, index) => [headers[index], value])));
-if (questions.length !== 30 || questions.some((item) => !item.id || !item.question || !item.expected_behavior)) {
-  throw new Error('Question set must contain 30 complete rows');
+if (!questions.length || questions.some((item) => !item.id || !item.question || !item.expected_behavior)) {
+  throw new Error('Question set must contain complete rows');
 }
 
 const rows = questions.map((item) => {
@@ -37,7 +37,7 @@ const result = {
   label,
   generatedAt: new Date().toISOString(),
   commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  questionSet: 'evals/questions.csv (30 fixed questions; single-editor desk labels)',
+  questionSet: `${questionFile} (${questions.length} fixed questions; single-editor desk labels)`,
   scope: 'deterministic local evidence lookup; no LLM or user tasks',
   totals: {
     questions: rows.length,

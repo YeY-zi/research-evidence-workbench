@@ -14,3 +14,16 @@
 | SRC-002 | *A Survey of Brain Tumor Segmentation and Classification Algorithms* (2021), DOI: [10.3390/jimaging7090179](https://doi.org/10.3390/jimaging7090179), [PMC 原文](https://pmc.ncbi.nlm.nih.gov/articles/PMC8465364/)；演示涉及 Performance metrics 中 Dice 相似系数定义 | 原文页面注明 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
 本地演示不会在线抓取这些论文。来源链接只用于人工核对；章节定位应随原文版本复查。数据集 BraTS 的使用许可与论文许可不同，本仓库没有下载或分发 BraTS 数据。
+
+### 人工概述索引
+
+| 条目 | 依据位置 | 核对重点 |
+| --- | --- | --- |
+| E-001 | SRC-001 Abstract | 2012–2024 的回顾与当时规划中的 2025 挑战。 |
+| E-002 | SRC-001 Section 4.10 MRI modalities | T1、T1c、T2、FLAIR 四种模态。 |
+| E-003 | SRC-001 Section 4.10 item 6 | BraSyn-2023 的 2021 数据来源和随机缺失模态。 |
+| E-004 | SRC-002 Performance metrics equation 8 | Dice/DSC 的空间重叠含义。 |
+| E-005 | SRC-001 Section 4.10 label values | ET 标签值在 2023 年由 4 改为 3。 |
+| E-006 | SRC-001 Section 4.10 Number of tasks | 综述列出的 8 项任务。 |
+| E-007 | SRC-002 Performance metrics equation 7 | IoU/Jaccard 的重叠定义。 |
+| E-008 | SRC-002 Performance metrics equation 6 | F1 与 precision、recall 的调和平均关系。 |

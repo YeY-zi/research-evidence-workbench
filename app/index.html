@@ -14,14 +14,14 @@
   <main>
     <section class="hero">
       <div><p class="eyebrow">PUBLIC SOURCE WORKBENCH / LOCAL DEMO</p><h1>让每个研究判断<br><em>回到来源。</em></h1><p class="lead">提出一个问题，查看人工整理的文献线索，核对原文后保存证据卡片。</p></div>
-      <div class="hero-note"><span>01 / 范围说明</span><p>当前只搜索两篇公开综述中的 4 条人工整理线索。没有联网检索、PDF 解析或 AI 生成。</p></div>
+      <div class="hero-note"><span>01 / 范围说明</span><p>当前只搜索两篇公开综述中的 8 条人工整理线索。没有联网检索、PDF 解析或 AI 生成。</p></div>
     </section>
     <ol class="steps" aria-label="工作步骤"><li class="active">01 <span>研究问题</span></li><li>02 <span>文献来源</span></li><li>03 <span>证据卡片</span></li></ol>
 
     <section class="panel query-panel" aria-labelledby="query-title">
       <div class="section-head"><div><p class="eyebrow">STEP 01</p><h2 id="query-title">输入研究问题</h2></div><p>先从具体、可核对的问题开始。</p></div>
       <form id="query-form"><label for="question">研究问题</label><div class="query-row"><input id="question" name="question" type="text" maxlength="300" placeholder="例如：BraTS 2023 挑战列出哪些 MRI 模态？" autocomplete="off" required><button type="submit">查找线索 <span>→</span></button></div></form>
-      <div class="examples"><span>试试示例</span><button type="button" data-example="BraTS 2023 挑战列出哪些 MRI 模态？">BraTS 2023 模态</button><button type="button" data-example="Dice 系数主要衡量什么？">Dice 指标</button><button type="button" data-example="SegMamba 在 BraTS 2023 上的 WT Dice 精确数值是多少？">无答案示例</button></div>
+      <div class="examples"><span>试试示例</span><button type="button" data-example="BraTS 2023 挑战列出哪些 MRI 模态？">BraTS 2023 模态</button><button type="button" data-example="BraTS 2023 的 ET 标签数值更新成几？">ET 标签</button><button type="button" data-example="Dice 系数主要衡量什么？">Dice 指标</button><button type="button" data-example="SegMamba 在 BraTS 2023 上的 WT Dice 精确数值是多少？">无答案示例</button></div>
     </section>
 
     <section class="panel" id="results-panel" aria-labelledby="results-title" hidden>
@@ -32,7 +32,7 @@
     <section class="panel" id="editor-panel" aria-labelledby="editor-title" hidden>
       <div class="section-head"><div><p class="eyebrow">STEP 03</p><h2 id="editor-title">整理证据卡片</h2></div><p>写下你核对原文后的判断。</p></div>
       <div id="selected-source" class="selected-source"></div>
-      <form id="card-form"><label for="judgment">我的判断 <span class="required">必填</span></label><textarea id="judgment" rows="3" maxlength="1000" required placeholder="只写来源可以支持的具体判断；如未核对，请勿保存。"></textarea><label for="limitation">局限与待核验</label><textarea id="limitation" rows="2" maxlength="1000" placeholder="例如：此处为综述的二手信息，需回看原始挑战资料。"></textarea><div class="form-actions"><button type="submit">保存卡片 <span>→</span></button><span id="save-message" role="status"></span></div></form>
+      <form id="card-form"><label for="judgment">我的判断 <span class="required">必填</span></label><textarea id="judgment" rows="3" maxlength="1000" required placeholder="只写来源可以支持的具体判断；如未核对，请勿保存。"></textarea><label for="limitation">局限与待核验</label><textarea id="limitation" rows="2" maxlength="1000" placeholder="例如：此处为综述的二手信息，需回看原始挑战资料。"></textarea><label class="check-row" for="confirmed"><input id="confirmed" type="checkbox" required>我已打开并核对原文位置；这是我的自我确认。</label><div class="form-actions"><button type="submit">保存卡片 <span>→</span></button><span id="save-message" role="status"></span></div></form>
     </section>
 
     <section class="panel library" aria-labelledby="library-title"><div class="section-head"><div><p class="eyebrow">LOCAL LIBRARY</p><h2 id="library-title">我的证据卡片</h2></div><button type="button" class="outline" id="export-button" disabled>导出 Markdown ↓</button></div><p class="privacy">仅保存在当前浏览器；清除浏览器数据会删除卡片。请勿输入患者或机构敏感信息。</p><div id="cards"></div></section>
