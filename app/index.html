@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>研究证据助手｜本地演示</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="topbar">
@@ -27,6 +27,23 @@
     <section class="panel" id="results-panel" aria-labelledby="results-title" hidden>
       <div class="section-head"><div><p class="eyebrow">STEP 02</p><h2 id="results-title">文献与来源</h2></div><p id="results-count"></p></div>
       <div id="results" aria-live="polite"></div>
+      <div class="manual-source">
+        <button type="button" class="outline" id="manual-toggle" aria-expanded="false" aria-controls="manual-panel">手动登记已核对的公开来源 ＋</button>
+        <div id="manual-panel" hidden>
+          <p class="notice">用于内置线索未覆盖的论文。标题、链接、位置及许可由你填写；系统不验证论文内容或许可。</p>
+          <form id="manual-form">
+            <div class="manual-grid">
+              <label>论文标题 <span class="required">必填</span><input id="manual-title" type="text" maxlength="300" required></label>
+              <label>原文 HTTPS 链接 <span class="required">必填</span><input id="manual-url" type="url" maxlength="1000" pattern="https://.*" placeholder="https://…" required></label>
+              <label>DOI（可选）<input id="manual-doi" type="text" maxlength="200" placeholder="10.xxxx/…"></label>
+              <label>原文位置 <span class="required">必填</span><input id="manual-locator" type="text" maxlength="200" placeholder="例如：Abstract，第 2 段 / Table 1" required></label>
+              <label>许可说明（可选）<input id="manual-license" type="text" maxlength="200" placeholder="未确认则留空"></label>
+              <label>来源备注（可选）<input id="manual-note" type="text" maxlength="300" placeholder="仅供自己识别，不作为系统核验结论"></label>
+            </div>
+            <div class="form-actions"><button type="submit">选用此来源建卡 →</button><span id="manual-message" role="status"></span></div>
+          </form>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="editor-panel" aria-labelledby="editor-title" hidden>
@@ -38,6 +55,6 @@
     <section class="panel library" aria-labelledby="library-title"><div class="section-head"><div><p class="eyebrow">LOCAL LIBRARY</p><h2 id="library-title">我的证据卡片</h2></div><button type="button" class="outline" id="export-button" disabled>导出 Markdown ↓</button></div><p class="privacy">仅保存在当前浏览器；清除浏览器数据会删除卡片。请勿输入患者或机构敏感信息。</p><div id="cards"></div></section>
   </main>
   <footer>PERSONAL PROTOTYPE · 非临床工具 · 示例资料与许可见 <a href="../data/README.md">数据说明</a></footer>
-  <script type="module" src="main.mjs"></script>
+  <script type="module" src="main.mjs?v=3"></script>
 </body>
 </html>

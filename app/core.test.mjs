@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findEvidence, createCard, cardToMarkdown } from './core.mjs';
+import { findEvidence, createCard, createManualEvidence, cardToMarkdown } from './core.mjs';
 
 test('known question returns a locatable source', () => {
   const matches = findEvidence('BraTS 2023 挑战列出哪些 MRI 模态？');
@@ -36,4 +36,16 @@ test('saved card and export retain provenance and require human judgment', () =>
   assert.match(markdown, /Performance metrics/);
   assert.match(markdown, /https:\/\/pmc\.ncbi\.nlm\.nih\.gov/);
   assert.match(markdown, /还需核对原文/);
+});
+
+test('manual source allows a new paper while rejecting unsafe or incomplete provenance', () => {
+  assert.throws(() => createManualEvidence({ title: 'Paper', locator: 'Table 1', url: 'javascript:alert(1)' }));
+  assert.throws(() => createManualEvidence({ title: 'Paper', locator: '', url: 'https://example.org/paper' }));
+  assert.throws(() => createManualEvidence({ title: 'Paper', locator: 'Table 1', url: 'https://example.org/paper', doi: 'bad-doi' }));
+  const item = createManualEvidence({ title: 'Public paper', locator: 'Table 1', url: 'https://example.org/paper', doi: '10.1234/example', license: '待核实', note: '用户自己的检索线索' });
+  const card = createCard({ question: '新研究问题', judgment: '人工判断', evidenceItem: item, confirmed: true });
+  assert.equal(card.sourceUrl, 'https://example.org/paper');
+  assert.match(cardToMarkdown(card), /10\.1234\/example/);
+  assert.match(cardToMarkdown(card), /Table 1/);
+  assert.match(cardToMarkdown(card), /用户自己的检索线索/);
 });

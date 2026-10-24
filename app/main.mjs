@@ -1,4 +1,4 @@
-import { findEvidence, createCard, cardToMarkdown } from './core.mjs';
+import { findEvidence, createManualEvidence, createCard, cardToMarkdown, validatedSourceUrl } from './core.mjs?v=3';
 
 const key = 'research-evidence-workbench-cards-v1';
 const $ = (id) => document.getElementById(id);
@@ -32,7 +32,7 @@ function renderResults() {
   $('results-count').textContent = state.matches.length ? `${state.matches.length} 条人工整理线索` : '0 条匹配线索';
   if (!state.matches.length) {
     const empty = element('div', 'empty');
-    empty.append(element('strong', '', '当前示例资料未找到可定位证据。'), element('p', '', '请改写问题或直接查阅原文；系统不会补写未收录的数字或诊断。'));
+    empty.append(element('strong', '', '当前示例资料未找到可定位证据。'), element('p', '', '请改写问题或查阅原文；若已核对公开来源，可在下方手动登记。系统不会补写未收录的数字或诊断。'));
     container.append(empty);
     return;
   }
@@ -58,7 +58,10 @@ function selectMatch(match) {
   state.selected = match;
   const box = $('selected-source');
   box.replaceChildren();
-  box.append(element('span', 'source-label', '已选来源'), element('strong', '', match.source.title), element('span', '', `${match.source.id} · ${match.locator}`));
+  box.append(element('span', 'source-label', match.source.id.startsWith('USER-') ? '用户手动登记 · 未经系统核验' : '已选内置来源'), element('strong', '', match.source.title), element('span', '', `${match.source.id} · ${match.locator}`));
+  const sourceLink = element('a', '', '打开原文核对 ↗');
+  sourceLink.href = validatedSourceUrl(match.source.url); sourceLink.target = '_blank'; sourceLink.rel = 'noopener noreferrer';
+  box.append(sourceLink);
   $('judgment').value = '';
   $('limitation').value = '';
   $('confirmed').checked = false;
@@ -76,9 +79,13 @@ function renderCards() {
   state.cards.forEach((card) => {
     const item = element('article', 'saved-card');
     item.append(element('p', 'result-meta', `${card.sourceId} · ${card.locator}`), element('h3', '', card.question), element('p', 'summary', card.judgment), element('p', 'limitation', `来源：${card.sourceTitle}`));
+    if (card.sourceNote) item.append(element('p', 'limitation', `用户来源备注：${card.sourceNote}`));
     if (card.limitation) item.append(element('p', 'limitation', `局限：${card.limitation}`));
     const row = element('div', 'result-actions');
-    const link = element('a', '', '核对原文 ↗'); link.href = card.sourceUrl; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    let link;
+    try {
+      link = element('a', '', '核对原文 ↗'); link.href = validatedSourceUrl(card.sourceUrl); link.target = '_blank'; link.rel = 'noopener noreferrer';
+    } catch { link = element('span', 'notice', '来源链接无效，请检查导出记录'); }
     const remove = element('button', 'text-button', '删除卡片'); remove.type = 'button';
     remove.addEventListener('click', () => { state.cards = state.cards.filter((entry) => entry.id !== card.id); if (saveCards()) renderCards(); });
     row.append(link, remove); item.append(row); container.append(item);
@@ -90,6 +97,10 @@ $('query-form').addEventListener('submit', (event) => {
   state.question = $('question').value.trim();
   if (!state.question) { $('question').focus(); return; }
   state.matches = findEvidence(state.question);
+  $('manual-form').reset();
+  $('manual-panel').hidden = true;
+  $('manual-toggle').setAttribute('aria-expanded', 'false');
+  $('manual-message').textContent = '';
   renderResults();
   $('results-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
@@ -98,6 +109,29 @@ document.querySelectorAll('[data-example]').forEach((button) => button.addEventL
   $('question').value = button.dataset.example;
   $('query-form').requestSubmit();
 }));
+
+$('manual-toggle').addEventListener('click', () => {
+  const panel = $('manual-panel');
+  panel.hidden = !panel.hidden;
+  $('manual-toggle').setAttribute('aria-expanded', String(!panel.hidden));
+  if (!panel.hidden) $('manual-title').focus();
+});
+
+$('manual-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  try {
+    const match = createManualEvidence({
+      title: $('manual-title').value,
+      url: $('manual-url').value,
+      doi: $('manual-doi').value,
+      locator: $('manual-locator').value,
+      license: $('manual-license').value,
+      note: $('manual-note').value
+    });
+    $('manual-message').textContent = '';
+    selectMatch(match);
+  } catch (error) { $('manual-message').textContent = error.message; }
+});
 
 $('card-form').addEventListener('submit', (event) => {
   event.preventDefault();

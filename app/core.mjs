@@ -2,6 +2,39 @@ import { evidence, sources } from './sample-data.mjs';
 
 const sourceById = new Map(sources.map((source) => [source.id, source]));
 
+export function validatedSourceUrl(value) {
+  try {
+    const url = new URL(String(value || '').trim());
+    if (url.protocol !== 'https:' || url.username || url.password) throw new Error();
+    return url.href;
+  } catch {
+    throw new Error('请填写不含账号信息的 HTTPS 原文链接');
+  }
+}
+
+export function createManualEvidence({ title, url, doi, locator, license, note }) {
+  const cleanTitle = String(title || '').trim();
+  const cleanLocator = String(locator || '').trim();
+  const cleanDoi = String(doi || '').trim();
+  if (!cleanTitle || !cleanLocator) throw new Error('论文标题和原文位置不能为空');
+  if (cleanDoi && !/^10\.\d{4,9}\/\S+$/i.test(cleanDoi)) throw new Error('DOI 请使用 10.xxxx/… 格式');
+  const id = `USER-${globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`}`;
+  return {
+    id,
+    sourceId: id,
+    locator: cleanLocator,
+    summary: String(note || '').trim() || '用户手动添加的来源；系统未核查具体内容。',
+    source: {
+      id,
+      title: cleanTitle,
+      url: validatedSourceUrl(url),
+      doi: cleanDoi,
+      license: String(license || '').trim() || '待核实',
+      year: null
+    }
+  };
+}
+
 export function findEvidence(question) {
   const q = String(question || '').trim().toLowerCase();
   if (!q) return [];
@@ -32,6 +65,7 @@ export function createCard({ question, judgment, limitation, evidenceItem, confi
   if (!cleanQuestion || !cleanJudgment || !evidenceItem?.source || confirmed !== true) {
     throw new Error('请填写问题与判断、选择来源，并确认已核对原文');
   }
+  const sourceUrl = validatedSourceUrl(evidenceItem.source.url);
   return {
     id: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`,
     question: cleanQuestion,
@@ -40,9 +74,10 @@ export function createCard({ question, judgment, limitation, evidenceItem, confi
     evidenceId: evidenceItem.id,
     sourceId: evidenceItem.source.id,
     sourceTitle: evidenceItem.source.title,
-    sourceUrl: evidenceItem.source.url,
+    sourceUrl,
     sourceDoi: evidenceItem.source.doi,
     sourceLicense: evidenceItem.source.license,
+    sourceNote: evidenceItem.source.id.startsWith('USER-') ? evidenceItem.summary : '',
     locator: evidenceItem.locator,
     checkedByCreator: true,
     savedAt: new Date().toISOString()
@@ -60,6 +95,7 @@ export function cardToMarkdown(card) {
     `- 来源链接：${safe(card.sourceUrl)}`,
     `- DOI：${safe(card.sourceDoi) || '未记录'}`,
     `- 来源许可：${safe(card.sourceLicense) || '未记录'}`,
+    ...(card.sourceNote ? [`- 用户来源备注：${safe(card.sourceNote)}`] : []),
     `- 核对声明：${card.checkedByCreator ? '创建者勾选已核对原文（未独立验证）' : '未记录'}`,
     `- 局限与待核验：${safe(card.limitation) || '未填写'}`,
     `- 保存时间：${safe(card.savedAt)}`,
