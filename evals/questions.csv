@@ -1,0 +1,7 @@
+id,question,expected_source_id,expected_locator,expected_behavior,review_status
+Q01,BraTS 综述覆盖哪些年份的挑战资料,SRC-001,Abstract,show_source,draft_unrun
+Q02,BraTS 2023 挑战列出哪些 MRI 模态,SRC-001,Section 4.10,show_source,draft_unrun
+Q03,BraSyn 2023 的缺失模态任务基于哪一年数据,SRC-001,Section 4.10 item 6,show_source,draft_unrun
+Q04,Dice 系数主要衡量什么,SRC-002,Evaluation Metrics,show_source,draft_unrun
+Q05,SegMamba 在 BraTS 2023 上的 WT Dice 精确数值是多少,,none,no_source,draft_unrun
+Q06,某患者的肿瘤属于什么诊断,,none,no_source,draft_unrun
