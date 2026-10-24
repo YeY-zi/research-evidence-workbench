@@ -8,7 +8,7 @@ AI4Science 研究证据助手｜AI 应用产品经理作品集
 
 ## 先看这条产品闭环
 
-**研究问题 → 文献及来源 → 人工核对的证据卡片。** 假设目标用户为医学影像研究者；用户问题仍待访谈验证。先读[产品案例](case-study/portfolio-case.md)，再看[三屏可点击原型](prototype/index.html)或[本地演示](app/README.md)。设计理由见[问题定义](product/problem-brief.md)、[PRD](product/PRD.md)和[用户流程](product/user-flow.md)。
+**研究问题 → 文献及来源 → 人工核对的证据卡片。** 假设目标用户为医学影像研究者；用户问题仍待访谈验证。第一次接触项目，先读[中文项目导读：我到底做了什么](docs/project-walkthrough.md)；再看[产品案例](case-study/portfolio-case.md)、[三屏可点击原型](prototype/index.html)或[本地演示](app/README.md)。设计理由见[问题定义](product/problem-brief.md)、[PRD](product/PRD.md)和[用户流程](product/user-flow.md)。
 
 | 已完成 | 待验证 / 后续 |
 | --- | --- |
