@@ -1,7 +1,31 @@
-id,question,expected_source_id,expected_locator,expected_behavior,review_status
-Q01,BraTS 综述覆盖哪些年份的挑战资料,SRC-001,Abstract,show_source,draft_unrun
-Q02,BraTS 2023 挑战列出哪些 MRI 模态,SRC-001,Section 4.10,show_source,draft_unrun
-Q03,BraSyn 2023 的缺失模态任务基于哪一年数据,SRC-001,Section 4.10 item 6,show_source,draft_unrun
-Q04,Dice 系数主要衡量什么,SRC-002,Evaluation Metrics,show_source,draft_unrun
-Q05,SegMamba 在 BraTS 2023 上的 WT Dice 精确数值是多少,,none,no_source,draft_unrun
-Q06,某患者的肿瘤属于什么诊断,,none,no_source,draft_unrun
+id,question,expected_evidence_id,expected_behavior,reference_locator,review_status
+Q01,BraTS 综述回顾了哪些年份的数据集,E-001,show_source,Abstract,desk_checked
+Q02,Bonato 的论文从哪一年回顾到哪一年,E-001,show_source,Abstract,desk_checked
+Q03,该 BraTS 综述如何描述 2025 年挑战,E-001,show_source,Abstract,desk_checked
+Q04,BraTS 2023 挑战列出哪些 MRI 模态,E-002,show_source,Section 4.10 MRI modalities,desk_checked
+Q05,2023 BraTS 影像包含 T1c 之外的哪些序列,E-002,show_source,Section 4.10 MRI modalities,desk_checked
+Q06,在 BraTS 2023 中 FLAIR 与 T1 是否均是 MRI 模态,E-002,show_source,Section 4.10 MRI modalities,desk_checked
+Q07,BraSyn 2023 的数据基于哪一年 BraTS 挑战,E-003,show_source,Section 4.10 item 6,desk_checked
+Q08,缺失 MRI 序列的 BraSyn 2023 任务如何设置,E-003,show_source,Section 4.10 item 6,desk_checked
+Q09,2023 BraSyn 是否随机拿掉一种 MRI 模态,E-003,show_source,Section 4.10 item 6,desk_checked
+Q10,Dice 相似系数主要衡量什么,E-004,show_source,Performance metrics equation 8,desk_checked
+Q11,DSC 用来比较哪两个分割区域,E-004,show_source,Performance metrics equation 8,desk_checked
+Q12,Dice 指标评价模型分割与真实肿瘤区域的什么关系,E-004,show_source,Performance metrics equation 8,desk_checked
+Q13,BraTS 2023 的 ET 标签数值更新成几,E-005,show_source,Section 4.10 label values,desk_checked
+Q14,2023 年增强肿瘤 ET 标签从 4 改成多少,E-005,show_source,Section 4.10 label values,desk_checked
+Q15,BraTS 在 2023 年改变了哪项 ET 编码,E-005,show_source,Section 4.10 label values,desk_checked
+Q16,BraTS 2023 挑战列出了几项任务,E-006,show_source,Section 4.10 number of tasks,desk_checked
+Q17,2023 BraTS 综述共列出多少种挑战任务,E-006,show_source,Section 4.10 number of tasks,desk_checked
+Q18,IoU 又叫什么指标且主要衡量什么,E-007,show_source,Performance metrics equation 7,desk_checked
+Q19,Jaccard index 比较预测掩膜与真值的什么,E-007,show_source,Performance metrics equation 7,desk_checked
+Q20,F1 score 与 precision 和 recall 有什么关系,E-008,show_source,Performance metrics equation 6,desk_checked
+Q21,F1 分数是精确率和召回率的哪一种平均,E-008,show_source,Performance metrics equation 6,desk_checked
+Q22,SegMamba 在 BraTS 2023 上的 WT Dice 精确数值是多少,,no_source,not_in_fixture,scope_checked
+Q23,BraTS 2023 的平均 Dice 得分是多少,,no_source,not_in_fixture,scope_checked
+Q24,某患者 MRI 应诊断为什么疾病,,no_source,patient_level_query,scope_checked
+Q25,BraTS 2024 数据一共有多少患者,,no_source,not_in_fixture,scope_checked
+Q26,Elicit 的付费价格是多少,,no_source,not_in_fixture,scope_checked
+Q27,BraSyn 2023 的官方排行榜第一名是谁,,no_source,not_in_fixture,scope_checked
+Q28,BraTS 2023 具体测试集有多少张影像,,no_source,not_in_fixture,scope_checked
+Q29,Dice 公式中的 FP 和 FN 具体数值是多少,,no_source,not_in_fixture,scope_checked
+Q30,2025 BraTS 最终结果排名是什么,,no_source,not_in_fixture,scope_checked
