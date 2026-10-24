@@ -1,0 +1,159 @@
+{
+  "label": "challenge",
+  "generatedAt": "2026-10-24T12:52:56.867Z",
+  "commit": "615cc37989e7150caf5f5a5d9ea1e40aa695cf4a",
+  "questionSet": "evals/challenge.csv (16 fixed questions; single-editor desk labels)",
+  "scope": "deterministic local evidence lookup; no LLM or user tasks",
+  "totals": {
+    "questions": 16,
+    "passed": 16,
+    "answerable": 7,
+    "answerablePassed": 7,
+    "noSource": 9,
+    "noSourcePassed": 9
+  },
+  "rows": [
+    {
+      "id": "C01",
+      "question": "2023 BraTS 中增强肿瘤标签改为 3 吗",
+      "expectedEvidenceId": "E-005",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-005"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C02",
+      "question": "2023 BraTS 总共有多少项任务",
+      "expectedEvidenceId": "E-006",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-006"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C03",
+      "question": "F1 是 precision 和 recall 的调和平均吗",
+      "expectedEvidenceId": "E-008",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-008"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C04",
+      "question": "BraSyn 2023 为什么需要缺失 MRI 任务",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C05",
+      "question": "Bonato 论文回顾的 BraTS 数据集年份范围是什么",
+      "expectedEvidenceId": "E-001",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-001"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C06",
+      "question": "T1c 在 BraTS 2023 四种 MRI 模态中吗",
+      "expectedEvidenceId": "E-002",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-002"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C07",
+      "question": "FLAIR 序列的采集时间是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C08",
+      "question": "BraSyn 2023 的论文作者是谁",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C09",
+      "question": "ET 标签在 BraTS 2022 的取值是什么",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C10",
+      "question": "F1 分数在 BraTS 2023 上是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C11",
+      "question": "IoU 在哪家医院采集数据",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C12",
+      "question": "BraTS 2023 的 MRI 模态哪种最好",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C13",
+      "question": "Dice 系数的最大值是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "C14",
+      "question": "Jaccard index 是 IoU 吗",
+      "expectedEvidenceId": "E-007",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-007"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C15",
+      "question": "2025 在 Bonato 综述中是已完成挑战还是规划中",
+      "expectedEvidenceId": "E-001",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-001"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C16",
+      "question": "BraTS 2023 任务的获奖团队有哪些",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    }
+  ]
+}

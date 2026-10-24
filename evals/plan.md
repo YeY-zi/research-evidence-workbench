@@ -1,6 +1,6 @@
 # 评价方案 v0.2｜离线结果与待做用户评测
 
-**现状**：已冻结[30 道单人桌面标注题](questions.csv)，运行过[原型基线逐题结果](results-baseline.json)。这只是受控资料上的程序测试，尚无目标用户任务成功率或访谈结果。
+**现状**：已冻结[30 道单人桌面标注题](questions.csv)，保留[原型基线](results-baseline.json)与[改进版逐题结果](results-improved.json)；另有作者设计的[16 题边界集](challenge.csv)及[逐题结果](results-challenge.json)。这些只是受控资料上的程序测试，尚无目标用户任务成功率或访谈结果。
 
 ## 要回答的问题
 
@@ -16,7 +16,14 @@
 node evals/run.mjs baseline evals/results-baseline.json
 ```
 
-脚本对可回答题要求**恰好一个结果且证据 ID 正确**，对资料外题要求零结果。逐题原始输出写入 JSON。此规则检索基线为 18/30，其中可回答题 10/21、资料外题 8/9；具体失败见[基线文件](results-baseline.json)。这些比率不能推断真实研究者使用效果。
+脚本对可回答题要求**恰好一个结果且证据 ID 正确**，对资料外题要求零结果。逐题原始输出写入 JSON。此规则检索基线为 18/30，其中可回答题 10/21、资料外题 8/9；具体失败见[基线文件](results-baseline.json)。增加 4 条资料并收紧规则后，同一固定题集为 30/30；另一个作者设计的边界集为 16/16。它们是**已见题集上的确定性程序结果**，不能推断对新论文或真实研究者问题的性能；边界集也不是外部盲测。
+
+重跑当前版本：
+
+```powershell
+node evals/run.mjs improved evals/results-improved.json
+node evals/run.mjs challenge evals/results-challenge.json evals/challenge.csv
+```
 
 ## 指标口径
 

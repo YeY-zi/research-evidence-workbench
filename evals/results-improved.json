@@ -1,0 +1,299 @@
+{
+  "label": "improved",
+  "generatedAt": "2026-10-24T12:52:56.760Z",
+  "commit": "615cc37989e7150caf5f5a5d9ea1e40aa695cf4a",
+  "questionSet": "evals/questions.csv (30 fixed questions; single-editor desk labels)",
+  "scope": "deterministic local evidence lookup; no LLM or user tasks",
+  "totals": {
+    "questions": 30,
+    "passed": 30,
+    "answerable": 21,
+    "answerablePassed": 21,
+    "noSource": 9,
+    "noSourcePassed": 9
+  },
+  "rows": [
+    {
+      "id": "Q01",
+      "question": "BraTS 综述回顾了哪些年份的数据集",
+      "expectedEvidenceId": "E-001",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-001"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q02",
+      "question": "Bonato 的论文从哪一年回顾到哪一年",
+      "expectedEvidenceId": "E-001",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-001"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q03",
+      "question": "该 BraTS 综述如何描述 2025 年挑战",
+      "expectedEvidenceId": "E-001",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-001"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q04",
+      "question": "BraTS 2023 挑战列出哪些 MRI 模态",
+      "expectedEvidenceId": "E-002",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-002"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q05",
+      "question": "2023 BraTS 影像包含 T1c 之外的哪些序列",
+      "expectedEvidenceId": "E-002",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-002"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q06",
+      "question": "在 BraTS 2023 中 FLAIR 与 T1 是否均是 MRI 模态",
+      "expectedEvidenceId": "E-002",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-002"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q07",
+      "question": "BraSyn 2023 的数据基于哪一年 BraTS 挑战",
+      "expectedEvidenceId": "E-003",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-003"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q08",
+      "question": "缺失 MRI 序列的 BraSyn 2023 任务如何设置",
+      "expectedEvidenceId": "E-003",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-003"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q09",
+      "question": "2023 BraSyn 是否随机拿掉一种 MRI 模态",
+      "expectedEvidenceId": "E-003",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-003"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q10",
+      "question": "Dice 相似系数主要衡量什么",
+      "expectedEvidenceId": "E-004",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-004"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q11",
+      "question": "DSC 用来比较哪两个分割区域",
+      "expectedEvidenceId": "E-004",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-004"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q12",
+      "question": "Dice 指标评价模型分割与真实肿瘤区域的什么关系",
+      "expectedEvidenceId": "E-004",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-004"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q13",
+      "question": "BraTS 2023 的 ET 标签数值更新成几",
+      "expectedEvidenceId": "E-005",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-005"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q14",
+      "question": "2023 年增强肿瘤 ET 标签从 4 改成多少",
+      "expectedEvidenceId": "E-005",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-005"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q15",
+      "question": "BraTS 在 2023 年改变了哪项 ET 编码",
+      "expectedEvidenceId": "E-005",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-005"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q16",
+      "question": "BraTS 2023 挑战列出了几项任务",
+      "expectedEvidenceId": "E-006",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-006"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q17",
+      "question": "2023 BraTS 综述共列出多少种挑战任务",
+      "expectedEvidenceId": "E-006",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-006"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q18",
+      "question": "IoU 又叫什么指标且主要衡量什么",
+      "expectedEvidenceId": "E-007",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-007"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q19",
+      "question": "Jaccard index 比较预测掩膜与真值的什么",
+      "expectedEvidenceId": "E-007",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-007"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q20",
+      "question": "F1 score 与 precision 和 recall 有什么关系",
+      "expectedEvidenceId": "E-008",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-008"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q21",
+      "question": "F1 分数是精确率和召回率的哪一种平均",
+      "expectedEvidenceId": "E-008",
+      "expectedBehavior": "show_source",
+      "actualEvidenceIds": [
+        "E-008"
+      ],
+      "pass": true
+    },
+    {
+      "id": "Q22",
+      "question": "SegMamba 在 BraTS 2023 上的 WT Dice 精确数值是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q23",
+      "question": "BraTS 2023 的平均 Dice 得分是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q24",
+      "question": "某患者 MRI 应诊断为什么疾病",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q25",
+      "question": "BraTS 2024 数据一共有多少患者",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q26",
+      "question": "Elicit 的付费价格是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q27",
+      "question": "BraSyn 2023 的官方排行榜第一名是谁",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q28",
+      "question": "BraTS 2023 具体测试集有多少张影像",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q29",
+      "question": "Dice 公式中的 FP 和 FN 具体数值是多少",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    },
+    {
+      "id": "Q30",
+      "question": "2025 BraTS 最终结果排名是什么",
+      "expectedEvidenceId": null,
+      "expectedBehavior": "no_source",
+      "actualEvidenceIds": [],
+      "pass": true
+    }
+  ]
+}
